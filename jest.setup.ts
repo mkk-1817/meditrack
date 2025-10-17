@@ -136,7 +136,7 @@ Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
 });
 
 // Mock IntersectionObserver for scroll-based animations
-global.IntersectionObserver = jest.fn().mockImplementation((callback) => ({
+global.IntersectionObserver = jest.fn().mockImplementation((_callback) => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),
@@ -144,7 +144,7 @@ global.IntersectionObserver = jest.fn().mockImplementation((callback) => ({
 }));
 
 // Mock ResizeObserver for responsive components
-global.ResizeObserver = jest.fn().mockImplementation((callback) => ({
+global.ResizeObserver = jest.fn().mockImplementation((_callback) => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),

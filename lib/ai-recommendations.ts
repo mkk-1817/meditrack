@@ -56,14 +56,10 @@ export interface SymptomInput {
 export class HealthRecommendationEngine {
   private vitals: VitalReading[];
   private insightTemplates: any[];
-  private conditionRules: any;
-  private recommendations: any[];
 
   constructor() {
     this.vitals = vitalsData.vitals as VitalReading[];
     this.insightTemplates = insightsData.insightTemplates;
-    this.conditionRules = insightsData.conditionRules;
-    this.recommendations = insightsData.personalizedRecommendations;
   }
 
   /**
@@ -147,7 +143,7 @@ export class HealthRecommendationEngine {
   /**
    * Analyze cardiovascular health
    */
-  private analyzeCardiovascularHealth(vitals: Record<string, number>, lifestyle: UserProfile): HealthInsight | null {
+  private analyzeCardiovascularHealth(vitals: Record<string, number>, _lifestyle: UserProfile): HealthInsight | null {
     const heartRate = vitals.heartRate;
     const systolic = vitals.bloodPressureSystolic;
     const exercise = vitals.exerciseMinutes || 0;
@@ -193,7 +189,7 @@ export class HealthRecommendationEngine {
   /**
    * Analyze sleep quality
    */
-  private analyzeSleepQuality(vitals: Record<string, number>, lifestyle: UserProfile): HealthInsight | null {
+  private analyzeSleepQuality(vitals: Record<string, number>, _lifestyle: UserProfile): HealthInsight | null {
     const sleepHours = vitals.sleepHours;
     const stressLevel = vitals.stressLevel || 0;
 
@@ -240,7 +236,7 @@ export class HealthRecommendationEngine {
   private analyzeStressLevels(
     vitals: Record<string, number>, 
     symptoms: string[], 
-    symptomInput?: SymptomInput
+    _symptomInput?: SymptomInput
   ): HealthInsight | null {
     const stressLevel = vitals.stressLevel || 0;
     const heartRate = vitals.heartRate || 0;
@@ -297,7 +293,7 @@ export class HealthRecommendationEngine {
   /**
    * Analyze hydration levels
    */
-  private analyzeHydration(vitals: Record<string, number>, lifestyle: UserProfile): HealthInsight | null {
+  private analyzeHydration(vitals: Record<string, number>, _lifestyle: UserProfile): HealthInsight | null {
     const waterIntake = vitals.waterIntake || 0;
     const exercise = vitals.exerciseMinutes || 0;
     
@@ -344,7 +340,7 @@ export class HealthRecommendationEngine {
   /**
    * Analyze glucose levels
    */
-  private analyzeGlucose(vitals: Record<string, number>, lifestyle: UserProfile): HealthInsight | null {
+  private analyzeGlucose(vitals: Record<string, number>, _lifestyle: UserProfile): HealthInsight | null {
     const glucose = vitals.glucose;
     
     if (!glucose) return null;
@@ -387,7 +383,7 @@ export class HealthRecommendationEngine {
   /**
    * Analyze physical activity
    */
-  private analyzeActivity(vitals: Record<string, number>, lifestyle: UserProfile): HealthInsight | null {
+  private analyzeActivity(vitals: Record<string, number>, _lifestyle: UserProfile): HealthInsight | null {
     const steps = vitals.steps || 0;
     const exercise = vitals.exerciseMinutes || 0;
 

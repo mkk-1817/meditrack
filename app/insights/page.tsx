@@ -5,6 +5,9 @@
  * Tabbed Windows, Floating Filter Palette, Context Menus, Popup Details
  */
 
+// Force dynamic rendering to avoid window is not defined error
+export const dynamic = 'force-dynamic';
+
 import { Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, containerVariants, itemVariants } from '@/animations/motionVariants';

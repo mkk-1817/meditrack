@@ -71,7 +71,7 @@ export function ContextMenu({ items, onClose, position }: ContextMenuProps) {
       className="bg-white rounded-lg shadow-2xl border border-gray-200 py-2 min-w-[200px] z-[100]"
       style={level === 0 ? { position: 'fixed', left: position.x, top: position.y } : {}}
     >
-      {menuItems.map((item, index) => (
+      {menuItems.map((item) => (
         <div key={item.id}>
           {item.divider ? (
             <div className="h-px bg-gray-200 my-1" />

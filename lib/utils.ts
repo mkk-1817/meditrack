@@ -3,7 +3,8 @@
  * Essential for TailwindCSS component development
  */
 
-import { type ClassValue } from 'class-variance-authority';
+// Define ClassValue type locally
+type ClassValue = string | number | boolean | undefined | null | ClassValue[];
 
 /**
  * Mock clsx and twMerge functions (will be replaced with actual imports when dependencies are installed)

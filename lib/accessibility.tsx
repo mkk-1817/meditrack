@@ -70,7 +70,7 @@ export function useFocusTrap(isActive: boolean) {
 export function useScreenReader() {
   const [announcement, setAnnouncement] = useState('');
 
-  const announce = (message: string, priority: 'polite' | 'assertive' = 'polite') => {
+  const announce = (message: string, _priority: 'polite' | 'assertive' = 'polite') => {
     setAnnouncement(''); // Clear first to ensure re-announcement
     setTimeout(() => setAnnouncement(message), 100);
   };
@@ -132,6 +132,7 @@ export function useKeyboardNavigation(itemCount: number, columns = 1) {
       container.addEventListener('keydown', handleKeyDown);
       return () => container.removeEventListener('keydown', handleKeyDown);
     }
+    return undefined;
   }, [focusedIndex, itemCount, columns]);
 
   return { focusedIndex, setFocusedIndex, containerRef };
@@ -381,7 +382,7 @@ export function AccessibleField({
 /**
  * Color contrast utilities
  */
-export function getContrastRatio(color1: string, color2: string): number {
+export function getContrastRatio(_color1: string, _color2: string): number {
   // Simplified contrast ratio calculation
   // In production, use a proper color contrast library
   return 4.5; // Placeholder - meets WCAG AA standard

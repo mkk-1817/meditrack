@@ -410,7 +410,7 @@ export const preloadLottieAnimations = async (animations: (keyof typeof lottieCo
 /**
  * Performance optimization: Lazy load animations
  */
-export const useLazyLottie = (name: keyof typeof lottieConfigs, threshold = 0.1) => {
+export const useLazyLottie = (_name: keyof typeof lottieConfigs, threshold = 0.1) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [shouldLoad, setShouldLoad] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);

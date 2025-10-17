@@ -8,12 +8,12 @@
 import { Suspense, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import VitalCard from '../../components/VitalCard';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { pageVariants, containerVariants, itemVariants } from '@/animations/motionVariants';
 import { storage, STORAGE_KEYS, VitalReading, HealthInsight } from '@/lib/localStorage';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { ContextMenu, ContextMenuItem, PieMenu, PieMenuItem, DropdownMenu } from '@/components/HCIMenus';
-import { Dialog, TabbedWindow, Tab, MessageWindow, ToastMessage, PopupWindow } from '@/components/HCIWindows';
+import { ContextMenu, ContextMenuItem, PieMenu, PieMenuItem } from '@/components/HCIMenus';
+import { Dialog, MessageWindow, ToastMessage, PopupWindow } from '@/components/HCIWindows';
 
 interface DashboardVital {
   id: string;
@@ -72,7 +72,6 @@ function DashboardContent() {
   const [dialogState, setDialogState] = useState<{ isOpen: boolean; type: 'view' | 'edit' | 'delete'; data?: any }>({ isOpen: false, type: 'view' });
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [detailsPopup, setDetailsPopup] = useState<{ isOpen: boolean; data?: any }>({ isOpen: false });
-  const [activeView, setActiveView] = useState<'overview' | 'detailed'>('overview');
 
   // Toast Management
   const showToast = (type: ToastMessage['type'], title: string, message: string) => {
