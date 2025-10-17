@@ -996,7 +996,7 @@ function InsightsContent() {
         isOpen={filterPalette}
         onClose={() => setFilterPalette(false)}
         title="Filter Insights"
-        initialPosition={{ x: window.innerWidth - 400, y: 100 }}
+        initialPosition={{ x: typeof window !== 'undefined' ? window.innerWidth - 400 : 800, y: 100 }}
         width={350}
         height={450}
       >

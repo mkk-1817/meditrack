@@ -627,7 +627,10 @@ function ProfileContent() {
         isOpen={achievementWindow.isOpen}
         onClose={() => setAchievementWindow({ isOpen: false })}
         title={achievementWindow.data?.title || 'Achievement Details'}
-        initialPosition={{ x: window.innerWidth / 2 - 200, y: window.innerHeight / 2 - 200 }}
+        initialPosition={{ 
+          x: typeof window !== 'undefined' ? window.innerWidth / 2 - 200 : 400, 
+          y: typeof window !== 'undefined' ? window.innerHeight / 2 - 200 : 200 
+        }}
         width={400}
         height={350}
       >
