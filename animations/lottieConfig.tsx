@@ -213,7 +213,7 @@ export const LottieAnimation: React.FC<LottieAnimationProps> = ({
 /**
  * Controlled Lottie Animation Hook
  */
-export const useLottieAnimation = (name: keyof typeof lottieConfigs) => {
+export const useLottieAnimation = (_name: keyof typeof lottieConfigs) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [isComplete, setIsComplete] = React.useState(false);
