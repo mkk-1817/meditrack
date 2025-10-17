@@ -1,0 +1,168 @@
+{
+  "vitals": [
+    {
+      "id": "1",
+      "type": "heartRate",
+      "value": 72,
+      "unit": "bpm",
+      "timestamp": "2024-01-15T08:30:00Z",
+      "severity": "normal",
+      "trend": "stable",
+      "trendValue": 0,
+      "notes": "Resting heart rate after morning workout"
+    },
+    {
+      "id": "2",
+      "type": "bloodPressureSystolic",
+      "value": 125,
+      "unit": "mmHg",
+      "timestamp": "2024-01-15T08:32:00Z",
+      "severity": "warning",
+      "trend": "up",
+      "trendValue": 5,
+      "notes": "Slightly elevated, monitor stress levels"
+    },
+    {
+      "id": "3",
+      "type": "bloodPressureDiastolic",
+      "value": 82,
+      "unit": "mmHg",
+      "timestamp": "2024-01-15T08:32:00Z",
+      "severity": "normal",
+      "trend": "stable",
+      "trendValue": 1,
+      "notes": "Within normal range"
+    },
+    {
+      "id": "4",
+      "type": "temperature",
+      "value": 98.6,
+      "unit": "°F",
+      "timestamp": "2024-01-15T07:00:00Z",
+      "severity": "normal",
+      "trend": "stable",
+      "trendValue": 0.2,
+      "notes": "Normal body temperature"
+    },
+    {
+      "id": "5",
+      "type": "oxygenSaturation",
+      "value": 98,
+      "unit": "%",
+      "timestamp": "2024-01-15T08:35:00Z",
+      "severity": "normal",
+      "trend": "stable",
+      "trendValue": 0,
+      "notes": "Excellent oxygen levels"
+    },
+    {
+      "id": "6",
+      "type": "glucose",
+      "value": 95,
+      "unit": "mg/dL",
+      "timestamp": "2024-01-15T09:00:00Z",
+      "severity": "normal",
+      "trend": "down",
+      "trendValue": -3,
+      "notes": "Pre-breakfast reading"
+    },
+    {
+      "id": "7",
+      "type": "weight",
+      "value": 165,
+      "unit": "lbs",
+      "timestamp": "2024-01-15T07:15:00Z",
+      "severity": "normal",
+      "trend": "down",
+      "trendValue": -0.5,
+      "notes": "Gradual weight loss progress"
+    },
+    {
+      "id": "8",
+      "type": "steps",
+      "value": 8500,
+      "unit": "steps",
+      "timestamp": "2024-01-14T23:59:00Z",
+      "severity": "normal",
+      "trend": "up",
+      "trendValue": 1200,
+      "notes": "Daily step goal achieved"
+    },
+    {
+      "id": "9",
+      "type": "sleepHours",
+      "value": 7.5,
+      "unit": "hours",
+      "timestamp": "2024-01-15T06:30:00Z",
+      "severity": "normal",
+      "trend": "up",
+      "trendValue": 0.5,
+      "notes": "Good quality sleep"
+    },
+    {
+      "id": "10",
+      "type": "stressLevel",
+      "value": 3,
+      "unit": "/10",
+      "timestamp": "2024-01-15T09:15:00Z",
+      "severity": "normal",
+      "trend": "down",
+      "trendValue": -1,
+      "notes": "Low stress morning routine"
+    },
+    {
+      "id": "11",
+      "type": "waterIntake",
+      "value": 64,
+      "unit": "oz",
+      "timestamp": "2024-01-14T23:59:00Z",
+      "severity": "normal",
+      "trend": "up",
+      "trendValue": 8,
+      "notes": "Daily hydration goal met"
+    },
+    {
+      "id": "12",
+      "type": "exerciseMinutes",
+      "value": 45,
+      "unit": "min",
+      "timestamp": "2024-01-14T18:30:00Z",
+      "severity": "normal",
+      "trend": "up",
+      "trendValue": 15,
+      "notes": "Evening cardio session"
+    }
+  ],
+  "vitalRanges": {
+    "heartRate": {
+      "normal": { "min": 60, "max": 100 },
+      "warning": { "min": 50, "max": 120 },
+      "critical": { "min": 40, "max": 150 }
+    },
+    "bloodPressureSystolic": {
+      "normal": { "min": 90, "max": 120 },
+      "warning": { "min": 120, "max": 139 },
+      "critical": { "min": 140, "max": 180 }
+    },
+    "bloodPressureDiastolic": {
+      "normal": { "min": 60, "max": 80 },
+      "warning": { "min": 80, "max": 89 },
+      "critical": { "min": 90, "max": 120 }
+    },
+    "temperature": {
+      "normal": { "min": 97.0, "max": 99.5 },
+      "warning": { "min": 99.5, "max": 101.0 },
+      "critical": { "min": 101.0, "max": 104.0 }
+    },
+    "oxygenSaturation": {
+      "normal": { "min": 95, "max": 100 },
+      "warning": { "min": 90, "max": 95 },
+      "critical": { "min": 70, "max": 90 }
+    },
+    "glucose": {
+      "normal": { "min": 70, "max": 100 },
+      "warning": { "min": 100, "max": 125 },
+      "critical": { "min": 126, "max": 200 }
+    }
+  }
+}

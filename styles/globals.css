@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Design Tokens */
+:root {
+  --color-background: #F8FAF9;
+  --color-primary: #C79549;
+  --color-secondary: #1B4D4F;
+  --color-text-primary: #2B2B2B;
+  --color-text-secondary: #4B5563;
+  --color-alert: #8B2E1B;
+  
+  /* Typography Scale */
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-luxury: 0 10px 40px rgba(199, 149, 73, 0.1);
+  --shadow-clinical: 0 4px 20px rgba(27, 77, 79, 0.08);
+  --shadow-glow: 0 0 20px rgba(199, 149, 73, 0.3);
+  
+  /* Animation Timing */
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Wellness Aura Background */
+.wellness-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6;
+  background: linear-gradient(
+    45deg,
+    rgba(199, 149, 73, 0.05) 0%,
+    rgba(27, 77, 79, 0.03) 25%,
+    rgba(248, 250, 249, 0.1) 50%,
+    rgba(199, 149, 73, 0.03) 75%,
+    rgba(27, 77, 79, 0.05) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.wellness-aura::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(199, 149, 73, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(27, 77, 79, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(199, 149, 73, 0.06) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+/* Shimmer Effect Utility */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(199, 149, 73, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(199, 149, 73, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(199, 149, 73, 0.8);
+}
+
+/* Focus Styles for Accessibility */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to Main Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-background: #ffffff;
+    --color-text-primary: #000000;
+    --shadow-luxury: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-clinical: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .wellness-aura,
+  .wellness-aura::before {
+    animation: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .wellness-aura,
+  .custom-cursor,
+  nav,
+  button {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Component Layer Utilities */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 shadow-luxury hover:shadow-luxury-hover transform hover:scale-105 focus:ring-4 focus:ring-primary-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-500 hover:bg-secondary-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 shadow-clinical hover:shadow-clinical-hover transform hover:scale-105 focus:ring-4 focus:ring-secondary-200;
+  }
+  
+  .card-luxury {
+    @apply bg-white rounded-2xl p-6 shadow-luxury hover:shadow-luxury-hover transition-all duration-300 border border-gray-100;
+  }
+  
+  .card-clinical {
+    @apply bg-white rounded-xl p-4 shadow-clinical hover:shadow-clinical-hover transition-all duration-300 border border-gray-50;
+  }
+  
+  .text-luxury {
+    @apply font-heading text-primary-600;
+  }
+  
+  .text-clinical {
+    @apply font-body text-secondary-600;
+  }
+  
+  .glow-primary {
+    @apply shadow-glow;
+  }
+  
+  .glow-primary-strong {
+    @apply shadow-glow-strong;
+  }
+}
+
+/* Utility Layer */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-gradient-luxury {
+    background: linear-gradient(135deg, #C79549 0%, #DBA659 100%);
+  }
+  
+  .bg-gradient-clinical {
+    background: linear-gradient(135deg, #1B4D4F 0%, #339999 100%);
+  }
+  
+  .bg-gradient-wellness {
+    background: linear-gradient(135deg, 
+      rgba(199, 149, 73, 0.1) 0%, 
+      rgba(27, 77, 79, 0.05) 50%, 
+      rgba(248, 250, 249, 0.1) 100%
+    );
+  }
+}
+
+/* ========================================
+   SETTINGS-BASED FEATURE STYLES
+   ======================================== */
+
+/* Dark Mode */
+.dark {
+  --color-background: #1a1a1a;
+  --color-primary: #C79549;
+  --color-secondary: #2dd4bf;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #d1d5db;
+  --color-alert: #ef4444;
+}
+
+.dark body {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+/* Text Colors */
+.dark .text-navy-900 {
+  color: #f5f5f5 !important;
+}
+
+.dark .text-navy-700 {
+  color: #e5e5e5 !important;
+}
+
+.dark .text-navy-600 {
+  color: #d4d4d4 !important;
+}
+
+.dark .text-navy-500 {
+  color: #a3a3a3 !important;
+}
+
+.dark .text-gray-500 {
+  color: #737373 !important;
+}
+
+.dark .text-gray-600 {
+  color: #525252 !important;
+}
+
+/* Backgrounds - Remove bg-white override to let components handle it */
+.dark .bg-gray-50 {
+  background-color: #2d2d2d !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #3d3d3d !important;
+}
+
+/* Borders */
+.dark .border-gray-200 {
+  border-color: #404040 !important;
+}
+
+.dark .border-teal-200 {
+  border-color: #374151 !important;
+}
+
+.dark .border-gold-200 {
+  border-color: #374151 !important;
+}
+
+/* Hover States */
+.dark .hover\:bg-gray-100:hover {
+  background-color: #3d3d3d !important;
+}
+
+.dark .hover\:bg-gray-300:hover {
+  background-color: #525252 !important;
+}
+
+.dark .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.dark .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+.dark .text-white {
+  color: #ffffff !important;
+}
+
+.dark .border-gray-700 {
+  border-color: #374151 !important;
+}
+
+.dark .hover\:bg-gray-800:hover {
+  background-color: #2d2d2d !important;
+}
+
+.dark .hover\:text-white:hover {
+  color: #ffffff !important;
+}
+
+/* Dark Mode Card Styles */
+.dark-card-normal {
+  background-color: rgba(31, 41, 55, 0.7) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+  backdrop-filter: blur(8px);
+}
+
+.dark-card-warning {
+  background-color: rgba(120, 53, 15, 0.3) !important;
+  border-color: rgba(234, 179, 8, 0.4) !important;
+  backdrop-filter: blur(8px);
+}
+
+.dark-card-critical {
+  background-color: rgba(127, 29, 29, 0.3) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Dark Mode Dashboard Cards */
+.dark .stats-card {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+}
+
+.dark .insight-card {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+}
+
+.dark .detail-box {
+  background-color: rgba(31, 41, 55, 0.5) !important;
+}
+
+.dark .detail-header {
+  background: linear-gradient(to right, rgba(13, 148, 136, 0.2), rgba(199, 149, 73, 0.2)) !important;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --color-background: #ffffff;
+  --color-primary: #000000;
+  --color-secondary: #000000;
+  --color-text-primary: #000000;
+  --color-text-secondary: #000000;
+}
+
+.high-contrast body {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+}
+
+.high-contrast .text-navy-900,
+.high-contrast .text-navy-700,
+.high-contrast .text-navy-600,
+.high-contrast .text-gray-800,
+.high-contrast .text-gray-700,
+.high-contrast .text-gray-600 {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+.high-contrast .bg-white {
+  background-color: #ffffff !important;
+  border: 3px solid #000000 !important;
+}
+
+.high-contrast button,
+.high-contrast .btn-primary,
+.high-contrast .btn-secondary {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 3px solid #000000 !important;
+  font-weight: 700 !important;
+}
+
+.high-contrast a {
+  color: #0000ff !important;
+  text-decoration: underline !important;
+  font-weight: 700 !important;
+}
+
+.high-contrast .border-gray-200,
+.high-contrast .border-teal-200 {
+  border-color: #000000 !important;
+  border-width: 2px !important;
+}
+
+.high-contrast .shadow-clinical,
+.high-contrast .shadow-luxury {
+  box-shadow: 0 0 0 3px #000000 !important;
+}
+
+/* Reduce Animations */
+.reduce-animations *,
+.reduce-animations *::before,
+.reduce-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0s !important;
+}
+
+.reduce-animations .animate-spin,
+.reduce-animations .animate-pulse,
+.reduce-animations .animate-bounce {
+  animation: none !important;
+}
+
+.reduce-animations [class*="animate-"] {
+  animation: none !important;
+}
+
+/* Color Blind Support */
+.color-blind-support {
+  /* Use patterns and shapes in addition to colors */
+  filter: saturate(0.8);
+}
+
+.color-blind-support .bg-green-100,
+.color-blind-support .bg-green-50 {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+}
+
+.color-blind-support .bg-red-100,
+.color-blind-support .bg-red-50 {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+}
+
+.color-blind-support .bg-yellow-100,
+.color-blind-support .bg-yellow-50 {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+}
+
+.color-blind-support .bg-blue-100,
+.color-blind-support .bg-blue-50 {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+}
+
+/* Add icons before status text in color blind mode */
+.color-blind-support .status-normal::before {
+  content: "✓ ";
+}
+
+.color-blind-support .status-warning::before {
+  content: "⚠ ";
+}
+
+.color-blind-support .status-critical::before {
+  content: "✖ ";
+}
+
+.color-blind-support .status-success::before {
+  content: "✓ ";
+}
+
+.color-blind-support .status-error::before {
+  content: "✖ ";
+}
+
+.color-blind-support .status-info::before {
+  content: "ⓘ ";
+}
